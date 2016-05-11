@@ -1,5 +1,5 @@
 resource "aws_instance" "reversal-webserver" {
-    ami                         = "ami-f80e0596"
+    ami                         = "ami-d8cf28b9"
     availability_zone           = "ap-northeast-1c"
     instance_type               = "t2.micro"
     key_name                    = "reversal"
