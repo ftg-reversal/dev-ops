@@ -3,6 +3,19 @@ resource "aws_route53_zone" "ftg-reversal-com-public" {
     comment    = "HostedZone created by Route53 Registrar"
 }
 
+resource "aws_route53_record" "ftg-reversal-com-ns" {
+    zone_id = "${aws_route53_zone.ftg-reversal-com-public.zone_id}"
+    name = "ftg-reversal.com"
+    type = "NS"
+    ttl = "30"
+    records = [
+        "${aws_route53_zone.ftg-reversal-com-public.name_servers.0}",
+        "${aws_route53_zone.ftg-reversal-com-public.name_servers.1}",
+        "${aws_route53_zone.ftg-reversal-com-public.name_servers.2}",
+        "${aws_route53_zone.ftg-reversal-com-public.name_servers.3}"
+    ]
+}
+
 resource "aws_route53_record" "ftg-reversal-com-webserver" {
     zone_id = "${aws_route53_zone.ftg-reversal-com-public.id}"
     name    = "ftg-reversal.com"
