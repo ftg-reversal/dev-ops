@@ -3,30 +3,6 @@ resource "aws_route53_zone" "ftg-reversal-net-public" {
   comment    = "HostedZone created by Route53 Registrar"
 }
 
-resource "aws_route53_record" "ftg-reversal-net-ns" {
-  zone_id = "${aws_route53_zone.ftg-reversal-net-public.zone_id}"
-  name = "ftg-reversal.net"
-  type = "NS"
-  ttl = "30"
-  ttl = "172800"
-  records = [
-    "ns-774.awsdns-32.net",
-    "ns-244.awsdns-30.com",
-    "ns-1990.awsdns-56.co.uk",
-    "ns-1045.awsdns-02.org"
-  ]
-}
-
-resource "aws_route53_record" "ftg-reversal-net-soa" {
-  zone_id = "${aws_route53_zone.ftg-reversal-net-public.zone_id}"
-  name = "ftg-reversal.net"
-  type = "SOA"
-  ttl = "900"
-  records = [
-    "ns-774.awsdns-32.net admin.ftg-reversal.net. 1 7200 900 1209600 86400"
-  ]
-}
-
 resource "aws_route53_record" "google-mail-ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
   name    = "ftg-reversal.net"
