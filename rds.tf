@@ -6,7 +6,7 @@ resource "aws_db_instance" "reversal_db" {
     engine                    = "mysql"
     engine_version            = "5.6.27"
     instance_class            = "db.t2.micro"
-    name                      = "reversal_db"
+    name                      = "reversal"
     username                  = "reversal"
     password                  = "${var.db_password}"
     publicly_accessible       = false
