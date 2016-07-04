@@ -5,7 +5,7 @@ resource "aws_s3_bucket" "reversal" {
 
 resource "aws_s3_bucket" "sitemap" {
     bucket = "reversal-sitemap"
-    acl    = "private"
+    acl    = "public"
 }
 
 resource "aws_s3_bucket" "terraform" {
