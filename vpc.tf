@@ -26,12 +26,12 @@ resource "aws_subnet" "reversal_private_db2" {
     map_public_ip_on_launch = false
 }
 
-resource "aws_subnet" "reversal_private_redis" {
-    vpc_id                  = "${aws_vpc.reversal_vpc.id}"
-    cidr_block              = "10.0.4.0/24"
-    availability_zone       = "ap-northeast-1a"
-    map_public_ip_on_launch = false
-}
+/* resource "aws_subnet" "reversal_private_redis" { */
+/*     vpc_id                  = "${aws_vpc.reversal_vpc.id}" */
+/*     cidr_block              = "10.0.4.0/24" */
+/*     availability_zone       = "ap-northeast-1a" */
+/*     map_public_ip_on_launch = false */
+/* } */
 
 resource "aws_db_subnet_group" "reversal_db_subnet" {
     name        = "ftg-reversal"
@@ -39,11 +39,11 @@ resource "aws_db_subnet_group" "reversal_db_subnet" {
     subnet_ids  = ["${aws_subnet.reversal_private_db1.id}", "${aws_subnet.reversal_private_db2.id}"]
 }
 
-resource "aws_elasticache_subnet_group" "reversal_redis_subnet" {
-    name        = "ftg-reversal"
-    description = "Ftg-Reversal Redis"
-    subnet_ids  = ["${aws_subnet.reversal_private_redis.id}"]
-}
+/* resource "aws_elasticache_subnet_group" "reversal_redis_subnet" { */
+/*     name        = "ftg-reversal" */
+/*     description = "Ftg-Reversal Redis" */
+/*     subnet_ids  = ["${aws_subnet.reversal_private_redis.id}"] */
+/* } */
 
 resource "aws_internet_gateway" "public_gateway" {
     vpc_id = "${aws_vpc.reversal_vpc.id}"
