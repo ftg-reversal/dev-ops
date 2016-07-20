@@ -32,7 +32,7 @@ resource "aws_db_subnet_group" "reversal_db_subnet" {
     subnet_ids  = ["${aws_subnet.reversal_private_db1.id}", "${aws_subnet.reversal_private_db2.id}"]
 }
 
-resource "aws_elasticache_subnet_group" "reversal_redis_subnet" {
+resource "aws_elasticache_subnet_group" "reversal_redis1_subnet" {
     name        = "ftg-reversal"
     description = "Ftg-Reversal Redis"
     subnet_ids  = ["${aws_subnet.reversal_private_db1.id}"]
