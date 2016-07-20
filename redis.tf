@@ -1,7 +1,7 @@
 resource "aws_elasticache_cluster" "reversal_redis" {
     cluster_id = "reversal"
     engine = "redis"
-    node_type = "cache.m3.medium"
+    node_type = "cache.t2.micro"
     port = 6379
     num_cache_nodes = 1
     parameter_group_name = "default.redis2.8"
