@@ -90,7 +90,7 @@ resource "aws_security_group" "store_security_group" {
         to_port         = 6379
         protocol        = "tcp"
         security_groups = ["${aws_security_group.webserver_security_group.id}"]
-        self            = false
+        self            = true
     }
 
     ingress {
@@ -118,7 +118,7 @@ resource "aws_security_group" "imperial_security_group" {
         to_port         = 80
         protocol        = "tcp"
         security_groups = ["${aws_security_group.webserver_security_group.id}"]
-        self            = false
+        self            = true
     }
 
     ingress {
