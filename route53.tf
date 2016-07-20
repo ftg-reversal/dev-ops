@@ -59,14 +59,6 @@ resource "aws_route53_zone" "reversal-local-private" {
   vpc_region = "ap-northeast-1"
 }
 
-resource "aws_route53_record" "store-reversal-local" {
-  zone_id = "${aws_route53_zone.reversal-local-private.id}"
-  name    = "store.reversal.local"
-  type    = "A"
-  records = ["${aws_instance.reversal-store.private_ip}"]
-  ttl     = "300"
-}
-
 resource "aws_route53_record" "imperial-reversal-local" {
   zone_id = "${aws_route53_zone.reversal-local-private.id}"
   name    = "imperial.reversal.local"
@@ -80,5 +72,13 @@ resource "aws_route53_record" "rds-endpoint" {
   name    = "rds.reversal.local"
   type    = "CNAME"
   records = ["${aws_db_instance.reversal_db.address}"]
+  ttl     = "300"
+}
+
+resource "aws_route53_record" "redis-endpoint" {
+  zone_id = "${aws_route53_zone.reversal-local-private.id}"
+  name    = "redis.reversal.local"
+  type    = "CNAME"
+  records = ["${aws_elasticache_cluster.reversal_redis.address}"]
   ttl     = "300"
 }
