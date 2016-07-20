@@ -27,6 +27,14 @@ resource "aws_route53_record" "webserver-ftg-reversal-net" {
   ttl     = "300"
 }
 
+resource "aws_route53_record" "store-ftg-reversal-net" {
+  zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
+  name    = "store.ftg-reversal.net"
+  type    = "A"
+  records = ["${aws_eip.store-ip.public_ip}"]
+  ttl     = "300"
+}
+
 resource "aws_route53_record" "imperial-ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
   name    = "imperial.ftg-reversal.net"
