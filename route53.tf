@@ -74,11 +74,3 @@ resource "aws_route53_record" "rds-endpoint" {
   records = ["${aws_db_instance.reversal_db.address}"]
   ttl     = "300"
 }
-
-resource "aws_route53_record" "redis-endpoint" {
-  zone_id = "${aws_route53_zone.reversal-local-private.id}"
-  name    = "redis.reversal.local"
-  type    = "CNAME"
-  records = ["${aws_elasticache_cluster.reversal_redis.cache_nodes.0.address}"]
-  ttl     = "300"
-}
