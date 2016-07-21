@@ -18,7 +18,7 @@ resource "aws_instance" "reversal-store" {
     instance_type               = "t2.micro"
     key_name                    = "reversal"
     subnet_id                   = "${aws_subnet.reversal_public_webserver.id}"
-    vpc_security_group_ids      = ["${aws_security_group.imperial_store_group.id}"]
+    vpc_security_group_ids      = ["${aws_security_group.store_security_group.id}"]
 
     tags {
         "Name" = "store"
