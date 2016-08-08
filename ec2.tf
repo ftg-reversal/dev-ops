@@ -12,6 +12,20 @@ resource "aws_instance" "reversal-webserver" {
     }
 }
 
+resource "aws_instance" "reversal-batch" {
+    ami                         = "ami-6e1dd80f"
+    availability_zone           = "ap-northeast-1c"
+    instance_type               = "t2.micro"
+    key_name                    = "reversal"
+    subnet_id                   = "${aws_subnet.reversal_public_webserver.id}"
+    vpc_security_group_ids      = ["${aws_security_group.batch_security_group.id}"]
+    associate_public_ip_address = true
+
+    tags {
+        "Name" = "batch"
+    }
+}
+
 resource "aws_instance" "reversal-store" {
     ami                         = "ami-374db956"
     availability_zone           = "ap-northeast-1c"
@@ -43,6 +57,11 @@ resource "aws_eip" "webserver-ip" {
     vpc                  = true
 }
 
+resource "aws_eip" "batch-ip" {
+    instance             = "${aws_instance.reversal-batch.id}"
+    vpc                  = true
+}
+
 resource "aws_eip" "store-ip" {
     instance             = "${aws_instance.reversal-store.id}"
     vpc                  = true
@@ -64,6 +83,26 @@ resource "aws_security_group" "webserver_security_group" {
         protocol        = "tcp"
         cidr_blocks     = ["0.0.0.0/0"]
     }
+
+    ingress {
+        from_port       = 22
+        to_port         = 22
+        protocol        = "tcp"
+        cidr_blocks     = ["0.0.0.0/0"]
+    }
+
+    egress {
+        from_port       = 0
+        to_port         = 0
+        protocol        = "-1"
+        cidr_blocks     = ["0.0.0.0/0"]
+    }
+}
+
+resource "aws_security_group" "batch_security_group" {
+    name        = "batch security group"
+    description = "batch security group"
+    vpc_id      = "${aws_vpc.reversal_vpc.id}"
 
     ingress {
         from_port       = 22

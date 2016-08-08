@@ -27,6 +27,14 @@ resource "aws_route53_record" "webserver-ftg-reversal-net" {
   ttl     = "300"
 }
 
+resource "aws_route53_record" "batch-ftg-reversal-net" {
+  zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
+  name    = "batch.ftg-reversal.net"
+  type    = "A"
+  records = ["${aws_eip.batch-ip.public_ip}"]
+  ttl     = "300"
+}
+
 resource "aws_route53_record" "store-ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
   name    = "store.ftg-reversal.net"
@@ -57,6 +65,14 @@ resource "aws_route53_zone" "reversal-local-private" {
   name       = "reversal.local"
   vpc_id     = "${aws_vpc.reversal_vpc.id}"
   vpc_region = "ap-northeast-1"
+}
+
+resource "aws_route53_record" "batch-reversal-local" {
+  zone_id = "${aws_route53_zone.reversal-local-private.id}"
+  name    = "batch.reversal.local"
+  type    = "A"
+  records = ["${aws_instance.reversal-batch.private_ip}"]
+  ttl     = "300"
 }
 
 resource "aws_route53_record" "store-reversal-local" {
