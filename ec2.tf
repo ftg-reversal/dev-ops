@@ -128,7 +128,7 @@ resource "aws_security_group" "store_security_group" {
         from_port       = 6379
         to_port         = 6379
         protocol        = "tcp"
-        security_groups = ["${aws_security_group.webserver_security_group.id}"]
+        security_groups = ["${aws_security_group.batch_security_group.id}"]
         self            = true
     }
 
