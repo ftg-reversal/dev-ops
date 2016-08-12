@@ -27,7 +27,7 @@ resource "aws_instance" "reversal-batch" {
 }
 
 resource "aws_instance" "reversal-store" {
-    ami                         = "ami-374db956"
+    ami                         = "ami-dad91abb"
     availability_zone           = "ap-northeast-1c"
     instance_type               = "t2.micro"
     key_name                    = "reversal"
