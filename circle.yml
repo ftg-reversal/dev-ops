@@ -1,7 +1,7 @@
 machine:
   environment:
     PATH: $HOME/.terraform:$PATH
-    TERRAFORM_VERSION: 0.6.16
+    TERRAFORM_VERSION: 0.7.0
 dependencies:
   cache_directories:
     - ~/.terraform
