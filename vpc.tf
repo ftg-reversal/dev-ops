@@ -26,6 +26,13 @@ resource "aws_subnet" "reversal_private_db2" {
     map_public_ip_on_launch = false
 }
 
+resource "aws_subnet" "reversal_redis" {
+    vpc_id                  = "${aws_vpc.reversal_vpc.id}"
+    cidr_block              = "10.0.4.0/24"
+    availability_zone       = "ap-northeast-1c"
+    map_public_ip_on_launch = false
+}
+
 resource "aws_db_subnet_group" "reversal_db_subnet" {
     name        = "ftg-reversal"
     description = "Ftg-Reversal DB"
