@@ -33,12 +33,6 @@ resource "aws_subnet" "reversal_redis" {
     map_public_ip_on_launch = false
 }
 
-resource "aws_db_subnet_group" "reversal_db_subnet" {
-    name        = "ftg-reversal"
-    description = "Ftg-Reversal DB"
-    subnet_ids  = ["${aws_subnet.reversal_private_db1.id}", "${aws_subnet.reversal_private_db2.id}"]
-}
-
 resource "aws_internet_gateway" "public_gateway" {
     vpc_id = "${aws_vpc.reversal_vpc.id}"
 }

@@ -20,6 +20,12 @@ resource "aws_db_instance" "reversal_db" {
     final_snapshot_identifier = "reversal-final"
 }
 
+resource "aws_db_subnet_group" "reversal_db_subnet" {
+    name        = "ftg-reversal"
+    description = "Ftg-Reversal DB"
+    subnet_ids  = ["${aws_subnet.reversal_private_db1.id}", "${aws_subnet.reversal_private_db2.id}"]
+}
+
 resource "aws_db_parameter_group" "mysql-utf8" {
     name        = "mysql-utf8"
     family      = "mysql5.6"
