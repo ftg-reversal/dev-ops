@@ -110,7 +110,7 @@ resource "aws_security_group" "imperial_security_group" {
         from_port       = 80
         to_port         = 80
         protocol        = "tcp"
-        security_groups = ["${aws_security_group.webserver_security_group.id}"]
+        security_groups = ["${aws_security_group.webserver_security_group.id}", "${aws_security_group.batch_security_group.id}"]
         self            = true
     }
 
