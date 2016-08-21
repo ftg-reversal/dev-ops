@@ -13,9 +13,9 @@ resource "aws_instance" "reversal-webserver" {
 }
 
 resource "aws_instance" "reversal-batch" {
-    ami                         = "ami-e904c788"
+    ami                         = "ami-b337fbd2"
     availability_zone           = "ap-northeast-1c"
-    instance_type               = "t2.micro"
+    instance_type               = "t2.small"
     key_name                    = "reversal"
     subnet_id                   = "${aws_subnet.reversal_public_webserver.id}"
     vpc_security_group_ids      = ["${aws_security_group.batch_security_group.id}"]
