@@ -27,6 +27,14 @@ resource "aws_route53_record" "webserver-ftg-reversal-net" {
   ttl     = "300"
 }
 
+resource "aws_route53_record" "cdn-ftg-reversal-net" {
+  zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
+  name    = "cdn.ftg-reversal.net"
+  type    = "CNAME"
+  records = ["${aws_cloudfront_distribution.cdn.domain_name}"]
+  ttl     = "300"
+}
+
 resource "aws_route53_record" "batch-ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
   name    = "batch.ftg-reversal.net"

@@ -2,7 +2,7 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
   comment = "reversal_cloudfront_origin_access_identity"
 }
 
-resource "aws_cloudfront_distribution" "cf" {
+resource "aws_cloudfront_distribution" "cdn" {
   enabled = true
   comment = "reversal_cdn"
 
