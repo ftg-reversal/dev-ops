@@ -3,6 +3,11 @@ resource "aws_s3_bucket" "reversal" {
     acl    = "private"
 }
 
+resource "aws_s3_bucket" "cdn" {
+    bucket = "reversal-cdn"
+    acl    = "public-read"
+}
+
 resource "aws_s3_bucket" "sitemap" {
     bucket = "reversal-sitemap"
     acl    = "public"
