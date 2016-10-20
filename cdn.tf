@@ -4,7 +4,7 @@ resource "aws_cloudfront_distribution" "cf" {
 
   origin {
     origin_id   = "reversal-cdn"
-    domain_name = "reversal.s3.amazonaws.com"
+    domain_name = "reversal-cdn.s3.amazonaws.com"
 
     s3_origin_config {
       origin_access_identity = ""
