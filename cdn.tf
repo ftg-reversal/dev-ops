@@ -1,13 +1,17 @@
+resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
+  comment = "reversal_cloudfront_origin_access_identity"
+}
+
 resource "aws_cloudfront_distribution" "cf" {
-  enabled             = true
-  comment             = "reversal_cdn"
+  enabled = true
+  comment = "reversal_cdn"
 
   origin {
     origin_id   = "reversal-cdn"
     domain_name = "reversal-cdn.s3.amazonaws.com"
 
     s3_origin_config {
-      origin_access_identity = ""
+      origin_access_identity = "${aws_cloudfront_origin_access_identity.origin_access_identity.cloudfront_access_identity_path}"
     }
   }
 
