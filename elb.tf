@@ -10,6 +10,13 @@ resource "aws_elb" "elb" {
   listener {
     instance_port = 80
     instance_protocol = "http"
+    lb_port = 80
+    lb_protocol = "http"
+  }
+
+  listener {
+    instance_port = 80
+    instance_protocol = "http"
     lb_port = 443
     lb_protocol = "https"
     ssl_certificate_id = "arn:aws:acm:ap-northeast-1:312746001499:certificate/f07612ab-6d60-4c4b-adc1-c51e132cdb18"

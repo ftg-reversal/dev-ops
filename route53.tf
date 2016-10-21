@@ -23,8 +23,12 @@ resource "aws_route53_record" "webserver-ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
   name    = "ftg-reversal.net"
   type    = "A"
-  records = ["${aws_eip.webserver-ip.public_ip}"]
-  ttl     = "300"
+
+  alias {
+    name    = "${aws_elb.elb.dns_name}"
+    zone_id = "${aws_elb.elb.zone_id}"
+    evaluate_target_health = false
+  }
 }
 
 resource "aws_route53_record" "cdn-ftg-reversal-net" {
