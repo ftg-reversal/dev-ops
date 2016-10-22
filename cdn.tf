@@ -45,6 +45,8 @@ resource "aws_cloudfront_distribution" "cdn" {
   }
 
   viewer_certificate {
-    cloudfront_default_certificate = true
+    acm_certificate_arn      = "arn:aws:acm:us-east-1:312746001499:certificate/7f53984b-7e30-444f-92ba-fdb28cd24f60"
+    ssl_support_method       = "sni-only"
+    minimum_protocol_version = "TLSv1"
   }
 }
