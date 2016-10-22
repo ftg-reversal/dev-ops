@@ -19,7 +19,7 @@ resource "aws_route53_record" "google-ftg-reversal-net" {
   ttl     = "300"
 }
 
-resource "aws_route53_record" "webserver-ftg-reversal-net" {
+resource "aws_route53_record" "ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
   name    = "ftg-reversal.net"
   type    = "A"
@@ -41,6 +41,14 @@ resource "aws_route53_record" "cdn-ftg-reversal-net" {
     zone_id = "${aws_cloudfront_distribution.cdn.hosted_zone_id}"
     evaluate_target_health = false
   }
+}
+
+resource "aws_route53_record" "web-ftg-reversal-net" {
+  zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
+  name    = "web.ftg-reversal.net"
+  type    = "A"
+  records = ["${aws_eip.webserver-ip.public_ip}"]
+  ttl     = "300"
 }
 
 resource "aws_route53_record" "batch-ftg-reversal-net" {
