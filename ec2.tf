@@ -67,6 +67,13 @@ resource "aws_security_group" "webserver_security_group" {
   }
 
   ingress {
+    from_port       = 10080
+    to_port         = 10080
+    protocol        = "tcp"
+    cidr_blocks     = ["0.0.0.0/0"]
+  }
+
+  ingress {
     from_port       = 22
     to_port         = 22
     protocol        = "tcp"
