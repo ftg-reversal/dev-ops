@@ -59,13 +59,13 @@ resource "aws_route53_record" "batch-ftg-reversal-net" {
   ttl     = "300"
 }
 
-resource "aws_route53_record" "imperial-ftg-reversal-net" {
-  zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
-  name    = "imperial.ftg-reversal.net"
-  type    = "A"
-  records = ["${aws_eip.imperial-ip.public_ip}"]
-  ttl     = "300"
-}
+# resource "aws_route53_record" "imperial-ftg-reversal-net" {
+#   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
+#   name    = "imperial.ftg-reversal.net"
+#   type    = "A"
+#   records = ["${aws_eip.imperial-ip.public_ip}"]
+#   ttl     = "300"
+# }
 
 resource "aws_route53_record" "legacy-ftg-reversal-net" {
   zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
@@ -90,13 +90,13 @@ resource "aws_route53_record" "batch-reversal-local" {
   ttl     = "300"
 }
 
-resource "aws_route53_record" "imperial-reversal-local" {
-  zone_id = "${aws_route53_zone.reversal-local-private.id}"
-  name    = "imperial.reversal.local"
-  type    = "A"
-  records = ["${aws_instance.reversal-imperial.private_ip}"]
-  ttl     = "300"
-}
+# resource "aws_route53_record" "imperial-reversal-local" {
+#   zone_id = "${aws_route53_zone.reversal-local-private.id}"
+#   name    = "imperial.reversal.local"
+#   type    = "A"
+#   records = ["${aws_instance.reversal-imperial.private_ip}"]
+#   ttl     = "300"
+# }
 
 resource "aws_route53_record" "rds-endpoint" {
   zone_id = "${aws_route53_zone.reversal-local-private.id}"
