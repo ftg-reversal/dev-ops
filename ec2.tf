@@ -1,5 +1,5 @@
 resource "aws_instance" "reversal-webserver" {
-  ami                         = "ami-dad91abb"
+  ami                         = "ami-af0ea8ce"
   availability_zone           = "ap-northeast-1c"
   instance_type               = "t2.micro"
   key_name                    = "reversal"
@@ -13,7 +13,7 @@ resource "aws_instance" "reversal-webserver" {
 }
 
 resource "aws_instance" "reversal-batch" {
-  ami                         = "ami-b337fbd2"
+  ami                         = "ami-af0ea8ce"
   availability_zone           = "ap-northeast-1c"
   instance_type               = "t2.small"
   key_name                    = "reversal"
