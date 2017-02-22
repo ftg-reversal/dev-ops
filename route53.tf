@@ -113,3 +113,11 @@ resource "aws_route53_record" "redis-endpoint" {
   records = ["${aws_elasticache_cluster.redis.cache_nodes.0.address}"]
   ttl     = "300"
 }
+
+resource "aws_route53_record" "hatenablog" {
+  zone_id = "${aws_route53_zone.ftg-reversal-net-public.id}"
+  name    = "blog.ftg-reversal.net"
+  type    = "CNAME"
+  records = ["hatenablog.com"]
+  ttl     = "300"
+}
