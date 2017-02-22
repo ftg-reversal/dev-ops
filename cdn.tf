@@ -39,8 +39,7 @@ resource "aws_cloudfront_distribution" "cdn" {
 
   restrictions {
     geo_restriction {
-      restriction_type = "whitelist"
-      locations        = ["US", "CA", "GB", "DE", "JP"]
+      restriction_type = "none"
     }
   }
 
