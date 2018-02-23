@@ -27,3 +27,11 @@ resource "aws_s3_bucket" "terraform" {
   bucket = "reversal-terraform"
   acl    = "private"
 }
+
+resource "aws_s3_bucket" "www_redirect" {
+  bucket = "ftg-reversal.net"
+  acl = "public-read"
+  website {
+    redirect_all_requests_to = "www.ftg-reversal.net"
+  }
+}

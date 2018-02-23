@@ -5,7 +5,7 @@ resource "aws_cloudfront_origin_access_identity" "origin_access_identity" {
 resource "aws_cloudfront_distribution" "cdn" {
   enabled = true
   comment = "reversal_cdn"
-  price_class         = "PriceClass_200"
+  price_class = "PriceClass_200"
   aliases = ["ftg-reversal.net", "cdn.ftg-reversal.net"]
 
   origin {
